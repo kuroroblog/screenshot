@@ -37,10 +37,6 @@ class Selenium:
         options.binary_location = "/opt/headless/python/bin/headless-chromium"
 
         self.driver = webdriver.Chrome(
-            # LambdaのLayerを活用している。
-            # Layerとは、Lambda内に含まれるサービス名で、重いファイルや共通で利用するファイルを配置する場所。
-            # Lambdaとの紐付けを行うことで、紐づいたLambda関数ならば再利用可能。
-            # Lambda関数実行時には、/opt/以下にファイルが配置される。
             executable_path="/opt/headless/python/bin/chromedriver",
             chrome_options=options
         )
