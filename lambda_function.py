@@ -7,10 +7,10 @@ import os
 # もともとLambda自体、Linuxベースで動いている。 : https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-runtimes.html
 # 故に環境変数の扱いもLinuxを元にしていて、HOMEの環境変数は、「あなたのホームディレクトリのパス」を表す。
 # ホームディレクトリとは? : https://wa3.i-3-i.info/word11160.html
-# HOMEを/var/taskに設定することでlambda_handler関数が実行される前に、/var/task以下のファイルを自動読みこみする。
-# /var/task以下に、.fontsを設置することで、ファイルの自動読み込みを行い、文字化け現象を防ぐ。
-# Lambdaでアップロードしたコードは自動的に/var/task以下に配置される。
-os.environ['HOME'] = '/var/task'
+# HOMEを/opt/に設定することでlambda_handler関数が実行される前に、/opt/以下のファイルを自動読みこみする。
+# /opt/以下に、.fontsを設置することで、ファイルの自動読み込みを行い、文字化け現象を防ぐ。
+# LambdaのLayerでアップロードしたコードは自動的に/opt/以下に配置される。
+os.environ['HOME'] = '/opt/'
 
 # s3のサービスを利用する。
 s3 = boto3.resource('s3')
